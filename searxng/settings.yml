@@ -1,0 +1,24 @@
+# SearXNG: free, open-source, self-hosted metasearch engine used by the backend's
+# web-source check (backend/app/services/web_search.py, WEB_SEARCH_PROVIDER=searxng).
+# It forwards each query to public engines (Google, Bing, DuckDuckGo, Brave, ...) and
+# merges the results; no API key or account is needed.
+# Only reachable inside the Docker network (and on 127.0.0.1:18888 for debugging).
+use_default_settings: true
+
+general:
+  instance_name: "plagiarism-websearch"
+
+server:
+  # The real key comes from the SEARXNG_SECRET environment variable (root .env file,
+  # not committed), which overrides this placeholder. Generate one with:
+  #   python -c "import secrets; print(secrets.token_hex(32))"
+  secret_key: "set-via-SEARXNG_SECRET-env-variable"
+  limiter: false          # our backend is the only client; don't rate-limit it
+  image_proxy: false
+  public_instance: false
+
+search:
+  safe_search: 0
+  formats:
+    - html
+    - json                # the backend calls /search?format=json

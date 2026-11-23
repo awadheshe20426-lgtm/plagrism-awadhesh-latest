@@ -1,12 +1,58 @@
-__pycache__/
-*.pyc
-*.log
+# ---- Secrets / environment (never commit) ----
 .env
 .env.*
 !.env*.example
 backend/.env.docker
-uploads/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
 
-# runtime state / local backups
+# ---- Uploaded student submissions & runtime data ----
+uploads/
+backend/uploads/
 celerybeat-schedule
+celerybeat.pid
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+
+# ---- Local backups / archives ----
 *.bak-*
+*.bak
+*.zip
+*.rar
+*.7z
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# ---- Node / frontend build ----
+node_modules/
+frontend/.vite/
+frontend/dist/
+
+# ---- Logs ----
+*.log
+
+# ---- Editor / OS / tooling ----
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+
+# ---- SearXNG runtime files (only settings.yml is tracked) ----
+searxng/*
+!searxng/settings.yml

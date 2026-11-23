@@ -44,6 +44,7 @@ services:
       - "127.0.0.1:18888:8080"   # local debugging only: http://127.0.0.1:18888
     environment:
       - SEARXNG_BASE_URL=http://searxng:8080/
+      - SEARXNG_SECRET=${SEARXNG_SECRET:?set SEARXNG_SECRET in the root .env file (see .env.example)}
     volumes:
       - ./searxng:/etc/searxng
 
